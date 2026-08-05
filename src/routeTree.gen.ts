@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedFavoritesRouteImport } from './routes/_authenticated/favorites'
 import { Route as AuthenticatedRecipesIndexRouteImport } from './routes/_authenticated/recipes.index'
 import { Route as AuthenticatedRecipesRecipeIdRouteImport } from './routes/_authenticated/recipes.$recipeId'
 import { Route as AuthenticatedRecipesNewRouteImport } from './routes/_authenticated/recipes.new'
@@ -34,6 +35,11 @@ const AuthRoute = AuthRouteImport.update({
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFavoritesRoute = AuthenticatedFavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedRecipesIndexRoute =
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/favorites': typeof AuthenticatedFavoritesRoute
   '/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRoute
   '/recipes/new': typeof AuthenticatedRecipesNewRoute
   '/recipes/': typeof AuthenticatedRecipesIndexRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/favorites': typeof AuthenticatedFavoritesRoute
   '/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRoute
   '/recipes/new': typeof AuthenticatedRecipesNewRoute
   '/recipes': typeof AuthenticatedRecipesIndexRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/favorites': typeof AuthenticatedFavoritesRoute
   '/_authenticated/recipes/$recipeId': typeof AuthenticatedRecipesRecipeIdRoute
   '/_authenticated/recipes/new': typeof AuthenticatedRecipesNewRoute
   '/_authenticated/recipes/': typeof AuthenticatedRecipesIndexRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/favorites'
     | '/recipes/$recipeId'
     | '/recipes/new'
     | '/recipes/'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/dashboard'
+    | '/favorites'
     | '/recipes/$recipeId'
     | '/recipes/new'
     | '/recipes'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/dashboard'
+    | '/_authenticated/favorites'
     | '/_authenticated/recipes/$recipeId'
     | '/_authenticated/recipes/new'
     | '/_authenticated/recipes/'
@@ -144,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/favorites': {
+      id: '/_authenticated/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof AuthenticatedFavoritesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/recipes/': {
       id: '/_authenticated/recipes/'
       path: '/recipes'
@@ -170,6 +189,7 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedFavoritesRoute: typeof AuthenticatedFavoritesRoute
   AuthenticatedRecipesRecipeIdRoute: typeof AuthenticatedRecipesRecipeIdRoute
   AuthenticatedRecipesNewRoute: typeof AuthenticatedRecipesNewRoute
   AuthenticatedRecipesIndexRoute: typeof AuthenticatedRecipesIndexRoute
@@ -177,6 +197,7 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedFavoritesRoute: AuthenticatedFavoritesRoute,
   AuthenticatedRecipesRecipeIdRoute: AuthenticatedRecipesRecipeIdRoute,
   AuthenticatedRecipesNewRoute: AuthenticatedRecipesNewRoute,
   AuthenticatedRecipesIndexRoute: AuthenticatedRecipesIndexRoute,
