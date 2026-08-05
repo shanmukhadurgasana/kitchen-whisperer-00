@@ -20,10 +20,10 @@ export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Sign in — Savora" },
-      { name: "description", content: "Sign in or create your free Savora account." },
-      { property: "og:title", content: "Sign in — Savora" },
-      { property: "og:description", content: "Access your Savora recipe box and meal planner." },
+      { title: "Sign in " },
+      { name: "description", content: "Sign in or create your free Recipe Hub account." },
+      { property: "og:title", content: "Sign in — Recipe Hub" },
+      { property: "og:description", content: "Access your Recipe Hub recipe box and meal planner." },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -129,7 +129,7 @@ function AuthPage() {
           <span className="gradient-brand flex h-9 w-9 items-center justify-center rounded-xl text-primary-foreground">
             <ChefHat className="h-5 w-5" />
           </span>
-          <span className="font-display text-xl font-semibold tracking-tight">Savora</span>
+          <span className="font-display text-xl font-semibold tracking-tight">Recipe Hub</span>
         </Link>
 
         <Card className="shadow-lift">

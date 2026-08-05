@@ -70,7 +70,7 @@ function Brand() {
       <span className="gradient-brand flex h-9 w-9 items-center justify-center rounded-xl text-primary-foreground">
         <ChefHat className="h-5 w-5" />
       </span>
-      <span className="font-display text-xl font-semibold tracking-tight">Savora</span>
+      <span className="font-display text-xl font-semibold tracking-tight">Recipe Hub</span>
     </Link>
   );
 }

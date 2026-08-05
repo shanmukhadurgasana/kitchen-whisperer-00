@@ -149,7 +149,7 @@ function DashboardPage() {
           <EmptyState
             icon={ChefHat}
             title="No recipes yet"
-            description="Add your first recipe and Savora will start building your plan and shopping list."
+            description="Add your first recipe and Recipe Hub will start building your plan and shopping list."
             action={
               <Button asChild className="mt-2">
                 <Link to="/recipes/new">Add a recipe</Link>

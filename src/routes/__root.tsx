@@ -81,17 +81,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Savora — Recipe & Meal Organizer" },
+      { title: "Recipe Hub — Recipe & Meal Organizer" },
       {
         name: "description",
         content:
-          "Savora keeps your recipes, weekly meal plan and shopping list in one calm, beautiful place.",
+          "Recipe Hub keeps your recipes, weekly meal plan and shopping list in one calm, beautiful place.",
       },
-      { name: "author", content: "Savora" },
-      { property: "og:title", content: "Savora — Recipe & Meal Organizer" },
+      { name: "author", content: "Recipe Hub" },
+      { property: "og:title", content: "Recipe Hub — Recipe & Meal Organizer" },
       {
         property: "og:description",
-        content: "Save recipes, plan your week and shop smarter with Savora.",
+        content: "Save recipes, plan your week and shop smarter with Recipe Hub .",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

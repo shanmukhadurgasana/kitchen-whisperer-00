@@ -15,13 +15,13 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Savora — Your recipes, meal plan and shopping list" },
+      { title: "Recipe Hub — Your recipes, meal plan and shopping list" },
       {
         name: "description",
         content:
-          "Savora is a calm home for the food you actually cook: save recipes, plan the week and generate a shopping list in one tap.",
+          "Recipe Hub is a calm home for the food you actually cook: save recipes, plan the week and generate a shopping list in one tap.",
       },
-      { property: "og:title", content: "Savora — Your recipes, meal plan and shopping list" },
+      { property: "og:title", content: "Recipe Hub — Your recipes, meal plan and shopping list" },
       {
         property: "og:description",
         content: "Save recipes, plan the week and generate your shopping list automatically.",
@@ -62,7 +62,7 @@ function Landing() {
           <span className="gradient-brand flex h-9 w-9 items-center justify-center rounded-xl text-primary-foreground">
             <ChefHat className="h-5 w-5" />
           </span>
-          <span className="font-display text-xl font-semibold tracking-tight">Savora</span>
+          <span className="font-display text-xl font-semibold tracking-tight">Recipe Hub</span>
         </div>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost">
@@ -169,7 +169,7 @@ function Landing() {
 
       <footer className="border-t py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 text-sm text-muted-foreground sm:flex-row lg:px-8">
-          <p>© {new Date().getFullYear()} Savora</p>
+          <p>© {new Date().getFullYear()} Recipe Hub</p>
           <Link to="/auth" className="hover:text-foreground">
             Sign in
           </Link>
