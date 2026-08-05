@@ -59,20 +59,25 @@ function AuthPage() {
     event.preventDefault();
 
     if (mode === "forgot") {
-      const parsed = z.string().trim().email().safeParse(email);
-      if (!parsed.success) return toast.error("Enter a valid email address");
+      const parsedEmail = z.string().trim().email().safeParse(email);
+      if (!parsedEmail.success) {
+        toast.error("Enter a valid email address");
+        return;
+      }
       setPending(true);
-      const { error } = await supabase.auth.resetPasswordForEmail(parsed.data, {
+      const { error } = await supabase.auth.resetPasswordForEmail(parsedEmail.data, {
         redirectTo: `${window.location.origin}/reset-password`,
       });
       setPending(false);
-      if (error) return toast.error(error.message);
-      return toast.success("Password reset link sent — check your inbox");
+      if (error) toast.error(error.message);
+      else toast.success("Password reset link sent — check your inbox");
+      return;
     }
 
     const parsed = credentials.safeParse({ email, password });
     if (!parsed.success) {
-      return toast.error(parsed.error.issues[0]?.message ?? "Check your details");
+      toast.error(parsed.error.issues[0]?.message ?? "Check your details");
+      return;
     }
 
     setPending(true);
@@ -86,18 +91,22 @@ function AuthPage() {
         },
       });
       setPending(false);
-      if (error) return toast.error(error.message);
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
       if (!data.session) {
         setAwaitingConfirm(true);
-        return toast.success("Account created — confirm your email to continue");
+        toast.success("Account created — confirm your email to continue");
       }
       return;
     }
 
     const { error } = await supabase.auth.signInWithPassword(parsed.data);
     setPending(false);
-    if (error) return toast.error(error.message);
-    toast.success("Welcome back");
+    if (error) toast.error(error.message);
+    else toast.success("Welcome back");
+
   }
 
   async function handleGoogle() {
