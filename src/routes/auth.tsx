@@ -36,7 +36,9 @@ const credentials = z.object({
 });
 
 function AuthPage() {
-  const { mode = "signin" } = Route.useSearch();
+  const search = Route.useSearch();
+  const mode: "signin" | "signup" | "forgot" = search.mode ?? "signin";
+
   const navigate = useNavigate();
   const { session, loading } = useAuth();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
